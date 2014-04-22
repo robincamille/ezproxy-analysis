@@ -13,3 +13,7 @@ Analyzes EZproxy-generated log files and spits out a CSV with this info:
 * % student sessions of total off-campus
 * # fac/staff sessions off-campus
 * % fac/staff sessions of total off-campus
+
+Use it on the command line like so: 
+
+python ezp-analysis.py [directory to analyze] [desired output filename.csv]
