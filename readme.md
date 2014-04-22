@@ -1,4 +1,4 @@
-Analyzes EZproxy-generated log files and spits out a CSV with this info: 
+**Analyzes EZproxy-generated log files and spits out a CSV with this info:**
 
 * Filename of log being analyzed
 * # total connections
@@ -16,7 +16,7 @@ Analyzes EZproxy-generated log files and spits out a CSV with this info:
 
 Use it on the command line like so: 
 
-python ezp-analysis.py [directory to analyze] [desired output filename.csv]
+**python ezp-analysis.py [directory to analyze -- should be SPU logs] [desired output filename.csv]**
 
 
 "Sessions" are different from "connections." Sessions are when someone logs into EZproxy and does several things; a connection is a single HTTP request. Sessions can only be tracked if they're off-campus, as they rely on a session ID. On-campus EZproxy use can only be tracked with connections, which are less accurate. 
