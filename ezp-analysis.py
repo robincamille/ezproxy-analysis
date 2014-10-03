@@ -1,9 +1,11 @@
 # Robin Camille Davis
 # 2014-03-28
 
-## Script runs over all EZproxy-generated logs in a given directory.
+## Script runs over all EZproxy-generated logs in a given directory. Best used with SPU logs.
 
 ## Must be edited with your organization's internal IP ranges. See two commented locations.
+## Familiarize yourself with the data in the log.
+## See http://emerging.commons.gc.cuny.edu/2014/04/analyzing-ezproxy-logs-python/ 
 
 ## Must be called on command line with this structure:
 ## python ezp-analysis.py [directory to analyze] [desired output filename.csv]
