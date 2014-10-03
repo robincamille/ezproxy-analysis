@@ -3,7 +3,7 @@
 
 ## Script runs over all EZproxy-generated logs in a given directory.
 
-## Must be edited with your organization's IP ranges. See two commented locations.
+## Must be edited with your organization's internal IP ranges. See two commented locations.
 
 ## Must be called on command line with this structure:
 ## python ezp-analysis.py [directory to analyze] [desired output filename.csv]
