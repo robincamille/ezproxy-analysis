@@ -2,8 +2,12 @@
 # 2014-03-28
 
 ## Script runs over all EZproxy-generated logs in a given directory.
+
+## Must be edited with your organization's IP ranges. See two commented locations.
+
 ## Must be called on command line with this structure:
 ## python ezp-analysis.py [directory to analyze] [desired output filename.csv]
+
 ## Outputs a file with these columns:
     ## Filename of log
     ## total connections
@@ -52,13 +56,13 @@ total off-campus')
         
         for line in lines:
             
-            ipaddr = re.search(r'10\.\d+?\.\d+?\.\d+?\s-', line)
+            ipaddr = re.search(r'10\.\d+?\.\d+?\.\d+?\s-', line) # Edit this IP range
             if ipaddr:
                 oncampus = oncampus + 1 #this counts all on-campus connections from 10.x.x.x
             else:
                 offcampus = offcampus + 1 #this counts all other connections (off-campus)
                 
-            libip = re.search(r'10\.1\.11|2\.\d+?\s-', line)
+            libip = re.search(r'10\.1\.11|2\.\d+?\s-', line) # Edit this IP range
                 #this counts all connections from the library (10.1.11... or 10.1.12...)
             if libip:
                 libraryconnections = libraryconnections + 1
