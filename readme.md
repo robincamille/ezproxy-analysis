@@ -1,18 +1,18 @@
 **Analyzes EZproxy-generated log files and spits out a CSV with this info:**
 
 * Filename of log being analyzed
-* # total connections
-* # on-campus connections (as determined by IP addresses starting with "10." -- may be different for your campus)
-* % on-campus connections of total
-* # off-campus connections
-* % off-campus connections of total
-* # library connections (as determined by IP addresses starting with "10.11" and "10.12" -- will almost certainly be different for your campus)
-* % library of on-campus connections
-* % library of total connections
-* # student sessions off-campus
-* % student sessions of total off-campus
-* # fac/staff sessions off-campus
-* % fac/staff sessions of total off-campus
+* Number of total connections
+* Number of on-campus connections (as determined by IP addresses starting with "10." -- may be different for your campus)
+* Percentage of on-campus connections out of total
+* Number of off-campus connections
+* Percentage of off-campus connections out of total
+* Number of library connections (as determined by IP addresses starting with "10.11" and "10.12" -- will almost certainly be different for your campus)
+* Percentage of on-campus connections (out of total connections)
+* Percentage of library connections (out of total connections)
+* Number of student sessions off-campus
+* Percentage of student sessions out of total off-campus
+* Number of fac/staff sessions off-campus
+* Percentage of fac/staff sessions out of total off-campus
 
 Use it on the command line like so: 
 
