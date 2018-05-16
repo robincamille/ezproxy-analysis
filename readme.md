@@ -1,4 +1,4 @@
-This script analyzes EZproxy-generated "SPU" log files and spits out a CSV.
+This script analyzes EZproxy-generated "SPU" log files and spits out a CSV. It is currently written in Python 2.7.
 
 ## Use
 
@@ -45,3 +45,7 @@ CSV with this info:
 My blog post about this script: http://robincamille.com/2014-04-22-analyzing-ezproxy-logs-python/
 
 This script is also mentioned (briefly) in [*Coding for Librarians: Learning by Example*](https://www.alastore.ala.org/content/coding-librarians-learning-example) by Andromeda Yelton (2015).
+
+## See also
+
+A more ambitious EZproxy parsing project with a nice interface: https://github.com/ezpaarse-project/ezpaarse 
