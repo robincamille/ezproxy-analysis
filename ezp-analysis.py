@@ -1,5 +1,5 @@
 # Robin Camille Davis
-# 2014-03-28
+# created 2014-03-28 // revised 2018-05-16
 
 ## Script runs over all EZproxy-generated logs in a given directory. Best used with SPU logs.
 
@@ -8,7 +8,7 @@
 ## See http://emerging.commons.gc.cuny.edu/2014/04/analyzing-ezproxy-logs-python/ 
 
 ## Must be called on command line with this structure:
-## python ezp-analysis.py [directory to analyze] [desired output filename.csv]
+## python ezp-analysis.py [directory of SPU logs to analyze] [desired output filename.csv]
 
 ## Outputs a file with these columns:
     ## Filename of log
@@ -30,7 +30,7 @@ import re, sys, glob, os
 def main():
     """EZproxy log analysis: count up student and faculty/staff sessions"""
 
-    print 'EZproxy analysis beginning... This may take a few minutes.\n'
+    print('EZproxy analysis beginning... This may take a few minutes.\n')
 
     dirname = sys.argv[1] #must be a directory
     output = sys.argv[2] #must be CSV
@@ -45,7 +45,7 @@ total off-campus')
 
     for filename in glob.glob(os.path.join(dirname, '*.log')): #opens all log files in directory
 
-        print 'Now analyzing', filename
+        print('Now analyzing', filename)
         
         lines = [line.strip() for line in open(filename)] #reads file
         
@@ -58,14 +58,14 @@ total off-campus')
         
         for line in lines:
             
-            ipaddr = re.search(r'10\.\d+?\.\d+?\.\d+?\s-', line) # Edit this IP range
+            ipaddr = re.search(r'10\.\d+?\s-', line) # Edit this IP range
             if ipaddr:
-                oncampus = oncampus + 1 #this counts all on-campus connections from 10.x.x.x
+                oncampus = oncampus + 1 #this counts all on-campus connections from 10.x
             else:
                 offcampus = offcampus + 1 #this counts all other connections (off-campus)
                 
-            libip = re.search(r'10\.1\.11|2\.\d+?\s-', line) # Edit this IP range
-                #this counts all connections from the library (10.1.11... or 10.1.12...)
+            libip = re.search(r'L10\.1\s-', line) # Edit this IP range
+                #this counts all connections from the library (marked L10.1)
             if libip:
                 libraryconnections = libraryconnections + 1
                 
@@ -95,14 +95,18 @@ total off-campus')
         total = offcampus + oncampus #all connections
         totalcountoffcamp = studcount + faccount #all offcampus sessions
         
-        if totalcountoffcamp is not 0: #2008 logs issue
+        if totalcountoffcamp is not 0:
             studfrac = (float(studcount)/totalcountoffcamp) * 100 #students/total offcampus sessions
             facfrac = (float(faccount)/totalcountoffcamp) * 100 #faculty-staff/total offcampus sessions
         else:
             studfrac = 'n/a'
             facfrac = 'n/a'
+
+        if oncampus is not 0:
+            libfraccamp = (float(libraryconnections)/oncampus) * 100 # library/total oncampus connections
+        else:
+            libfraccamp = 'n/a'
             
-        libfraccamp = (float(libraryconnections)/oncampus) * 100 # library/total oncampus connections
         libfrac = (float(libraryconnections)/total) * 100 #library/total connections
         offcampfrac = (float(offcampus)/total) * 100 #oncampus/total connections
         oncampfrac = (float(oncampus)/total) * 100 #offcampus/total connections
@@ -117,7 +121,7 @@ total off-campus')
 
 
     outfile.close
-    print '\nOutput:', outfile
+    print('\nAll done!\n\nOutput:', output)
 
 main()
 
